@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="gallery-style.css">
+</head>
+<body>
+    <div class="gallery-container">
+        <header>
+            <h1>My Photo Gallery</h1>
+            <button id="logoutBtn" class="logout-button">Logout</button>
+        </header>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/cantik1.png" alt="Cantik 1">
+            </div>
+            <div class="gallery-item">
+                <img src="images/cantik3.png" alt="Cantik 3">
+            </div>
+            <div class="gallery-item">
+                <img src="images/cantik4.png" alt="Cantik 4">
+            </div>
+            <div class="gallery-item">
+                <img src="images/cantik5.png" alt="Cantik 5">
+            </div>
+            <div class="gallery-item">
+                <img src="images/cantik7.png" alt="Cantik 7">
+            </div>
+            <div class="gallery-item">
+                <img src="images/cantik8.png" alt="Cantik 8">
+            </div>
+            <div class="gallery-item">
+                <img src="images/cantik9.png" alt="Cantik 9">
+            </div>
+            <div class="gallery-item">
+                <img src="images/cantik10.jpg" alt="Cantik 10">
+            </div>
+            <div class="gallery-item">
+                <img src="images/cantik12.jpg" alt="Cantik 12">
+            </div>
+            <div class="gallery-item">
+                <img src="images/cantik13.jpg" alt="Cantik 13">
+            </div>
+            <div class="gallery-item">
+                <img src="images/cantik14.jpg" alt="Cantik 14">
+            </div>
+            <div class="gallery-item">
+                <img src="images/cantik15.jpg" alt="Cantik 15">
+            </div>
+        </div>
+    </div>
+    <script src="gallery-script.js"></script>
+    <script>
+        // Debugging script to check if images are loading
+        // This script will log messages to the browser console
+        // to help identify any issues with image loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.gallery-item img');
+            images.forEach(function(img, index) {
+                img.addEventListener('load', function() {
+                    console.log('Image ' + (index + 1) + ' loaded successfully: ' + img.src);
+                });
+                img.addEventListener('error', function() {
+                    console.log('Error loading image ' + (index + 1) + ': ' + img.src);
+                    // Try to reload the image
+                    setTimeout(function() {
+                        img.src = img.src + '?' + new Date().getTime(); // Add timestamp to force reload
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
